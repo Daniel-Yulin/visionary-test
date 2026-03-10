@@ -4,27 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>Visionary | Access</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container animate-in">
-        <h1 class="logo">VISIONARY.</h1>
-        <p class="subtitle">wallpapers after subscription ↓</p>
-        
-        <form id="email-form">
-            <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
-            <button type="submit" id="submit-btn">
-                <span class="btn-text">Subscribe</span>
-            </button>
-        </form>
+    <div id="toast" class="toast hidden">
+        <div class="toast-content">
+            <span class="check-icon">✓</span>
+            <span class="toast-text">Subscribed!</span>
+        </div>
+    </div>
 
-        <div id="message" class="hidden"></div>
-        
-        <footer>
-            BUILT FOR VISIONARIES.
-            <span class="privacy-note">您的資訊僅供內容交付，絕無商業廣告用途。</span>
-        </footer>
+    <div class="wrapper animate-in">
+        <div class="container">
+            <h1 class="logo">VISIONARY.</h1>
+            <p class="subtitle">訂閱後即可獲取本期動力 ↓</p>
+            
+            <form id="email-form">
+                <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
+                <button type="submit" id="submit-btn">
+                    <span id="btn-label">Subscribe</span>
+                </button>
+            </form>
+
+            <div id="message" class="hidden"></div>
+            
+            <footer>
+                <div class="footer-main">BUILT FOR VISIONARIES.</div>
+                <div class="privacy-note">您的資訊僅供內容交付，絕無商業廣告用途。</div>
+            </footer>
+        </div>
+        <div class="copyright">© 2026 視想家</div>
     </div>
     <script src="script.js"></script>
 </body>
