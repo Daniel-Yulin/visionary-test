@@ -9,7 +9,6 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* Inspyzen 風格：徑向漸層背景 */
     background: radial-gradient(circle at center, #1a1c2c 0%, #050505 100%);
     font-family: 'Inter', -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -28,12 +27,11 @@ body {
     width: 85%;
     max-width: 350px;
     background-color: #ffffff;
-    padding: 50px 30px;
+    padding: 55px 30px; /* 增加上下內邊距，提升比例感 */
     box-shadow: 0 40px 100px rgba(0,0,0,0.9);
     border-radius: 2px;
 }
 
-/* 進場動畫 */
 .animate-in {
     animation: fadeInScale 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -54,9 +52,7 @@ body {
 .subtitle {
     font-size: 0.85rem;
     color: #666;
-    margin-bottom: 2rem;
-    font-weight: 400;
-    letter-spacing: 0.05rem;
+    margin-bottom: 2.5rem; /* 增加與輸入框的距離 */
 }
 
 input {
@@ -67,11 +63,8 @@ input {
     font-size: 16px; 
     margin-bottom: 1rem;
     outline: none;
-    transition: border 0.3s;
 }
-input:focus { border: 1px solid #000; }
 
-/* 按鈕與光線進度條 */
 button {
     position: relative;
     width: 100%;
@@ -86,68 +79,90 @@ button {
     overflow: hidden;
     transition: transform 0.1s ease;
 }
+
 button:active { transform: scale(0.97); }
 
-/* 光線流動動畫 */
+/* 按鈕流動光條 */
 .shimmer {
     position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
     animation: loading 1.2s infinite;
 }
+
 @keyframes loading {
     from { left: -100%; }
     to { left: 100%; }
 }
 
-/* 頁尾文字修正 */
-footer { margin-top: 2.5rem; }
+footer { margin-top: 2.8rem; }
 .footer-main { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05rem; color: #000; }
-.privacy-note { margin-top: 0.8rem; font-size: 10px; color: #aaa; font-weight: 400; }
+.privacy-note { margin-top: 0.8rem; font-size: 10px; color: #aaa; }
 
-/* 外部版權文字 */
-.copyright {
-    margin-top: 2.5rem;
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.25);
-    letter-spacing: 0.05rem;
-    font-weight: 400;
+/* 外部底部 */
+.footer-external {
+    margin-top: 3.5rem; /* 增加外部間距，讓比例更舒展 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Toast 樣式 */
+.copyright {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.counter-container {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background-color: #4cd964;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 8px rgba(76, 217, 100, 0.5);
+}
+
+.count-number {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 4px;
+}
+
+/* Toast */
 .toast {
-    position: fixed;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-120px);
-    z-index: 1000;
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    position: fixed; top: 30px; left: 50%; transform: translateX(-50%) translateY(-120px);
+    z-index: 1000; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
 .toast-content {
-    background-color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: #fff; padding: 12px 24px; border-radius: 50px;
+    display: flex; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-.check-icon {
-    background-color: #4cd964;
-    color: white;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    margin-right: 10px;
-}
+.check-icon { background: #4cd964; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; margin-right: 10px; }
 .toast-text { color: #333; font-size: 0.9rem; font-weight: 700; }
 
 .hidden { display: none !important; }
-#message { line-height: 1.7; color: #1a1a1a; font-size: 0.85rem; }
-.success-title { display: block; font-size: 1.1rem; font-weight: 800; margin-bottom: 0.8rem; }
-.stay-visionary { display: block; margin-top: 1.2rem; font-weight: 700; font-style: italic; border-top: 1px solid #eee; padding-top: 1rem; }
+
+/* 成功訊息樣式優化 */
+#message { 
+    line-height: 1.8; 
+    font-size: 0.9rem; 
+    color: #1a1a1a; 
+    padding: 10px 0;
+}
+.success-title { 
+    display: block; 
+    font-size: 1.2rem; 
+    font-weight: 800; 
+    margin-bottom: 1rem; 
+}

@@ -22,9 +22,7 @@
             
             <form id="email-form">
                 <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
-                <button type="submit" id="submit-btn">
-                    <span id="btn-label">Subscribe</span>
-                </button>
+                <button type="submit" id="submit-btn">立即訂閱</button>
             </form>
 
             <div id="message" class="hidden"></div>
@@ -34,7 +32,14 @@
                 <div class="privacy-note">您的資訊僅供內容交付，絕無商業廣告用途。</div>
             </footer>
         </div>
-        <div class="copyright">© 2026 視想家</div>
+
+        <div class="footer-external">
+            <div class="copyright">© 2026 視想家</div>
+            <div class="counter-container">
+                <span class="dot"></span>
+                已有 <span id="member-count" class="count-number">0</span> 位視想家加入
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
