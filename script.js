@@ -6,8 +6,13 @@ const message = document.getElementById('message');
 
 form.addEventListener('submit', e => {
     e.preventDefault();
-    submitBtn.innerText = 'Connecting...';
+    
+    // 啟動按鈕動態：顯示進度條微動
     submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+        <span class="loading-shimmer"></span>
+        <span style="position: relative; z-index: 1;">Connecting...</span>
+    `;
 
     fetch(scriptURL, { 
         method: 'POST', 
@@ -17,7 +22,6 @@ form.addEventListener('submit', e => {
     .then(() => {
         form.classList.add('hidden');
         message.classList.remove('hidden');
-        // 文案已按要求改為最精簡版
         message.innerHTML = `
             <span class="success-title">成功訂閱</span>
             本期原圖將透過 Email 交付。<br>
@@ -27,7 +31,7 @@ form.addEventListener('submit', e => {
     })
     .catch(error => {
         console.error('Error!', error.message);
-        submitBtn.innerText = 'Error. Try Again.';
+        submitBtn.innerHTML = 'Error. Try Again.';
         submitBtn.disabled = false;
     });
 });
