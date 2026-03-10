@@ -17,9 +17,10 @@ form.addEventListener('submit', e => {
     .then(() => {
         form.classList.add('hidden');
         message.classList.remove('hidden');
+        // 文案已按要求改為最精簡版
         message.innerHTML = `
             <span class="success-title">成功訂閱</span>
-            本期原圖與週報將透過 Email 交付。<br>
+            本期原圖將透過 Email 交付。<br>
             請留意來自「視想家」的信件。<br>
             <span class="stay-visionary">Stay Visionary.</span>
         `;
