@@ -5,9 +5,7 @@ const toast = document.getElementById('toast');
 
 function rollSlot(id, target, delay) {
     const column = document.querySelector(`#${id} .slot-numbers`);
-    // 取得 CSS 的 1rem 作為位移單位
     const baseUnit = 1.0 * parseFloat(getComputedStyle(document.documentElement).fontSize);
-
     setTimeout(() => {
         column.style.transform = `translateY(-${target * baseUnit}px)`;
     }, delay);
@@ -16,7 +14,7 @@ function rollSlot(id, target, delay) {
 window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         rollSlot('slot-1', 3, 400); 
-        rollSlot('slot-2', 1, 900); // 增加啟動間隔
+        rollSlot('slot-2', 1, 900); 
         rollSlot('slot-3', 2, 1400); 
     }, 600);
 });
@@ -30,9 +28,11 @@ form.addEventListener('submit', e => {
     .then(() => {
         toast.classList.remove('hidden');
         setTimeout(() => toast.classList.add('show'), 50);
+        
         submitBtn.innerHTML = 'SUCCESS';
-        submitBtn.style.backgroundColor = '#4cd964';
+        submitBtn.style.backgroundColor = '#0a1931'; // 午夜藍成功色
         form.reset();
+        
         setTimeout(() => {
             toast.classList.remove('show');
             setTimeout(() => toast.classList.add('hidden'), 500);

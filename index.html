@@ -10,7 +10,9 @@
 <body>
     <div id="toast" class="toast hidden">
         <div class="toast-content">
-            <span class="check-icon">✓</span>
+            <div class="check-circle">
+                <span class="checkmark"></span>
+            </div>
             <span class="toast-text">訂閱成功</span>
         </div>
     </div>
@@ -21,13 +23,16 @@
                 <img src="logo-cloud.png" alt="Visionary Cloud Icon" class="logo-img">
                 <span class="logo-text">視想家</span>
             </div>
+
             <p class="subtitle">訂閱後即可獲取本期動力 ↓</p>
+            
             <form id="email-form">
                 <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
                 <button type="submit" id="submit-btn">
                     <span id="btn-label">NOW OR NEVER</span>
                 </button>
             </form>
+            
             <footer>
                 <div class="footer-main">BUILT FOR VISIONARIES.</div>
                 <div class="privacy-note">您的資訊僅供內容交付，絕無商業廣告用途。</div>
@@ -40,15 +45,9 @@
                 <span class="dot"></span>
                 <span class="counter-label">已有</span>
                 <div class="slot-machine">
-                    <div class="slot-column" id="slot-1">
-                        <div class="slot-numbers">0 1 2 3 4 5 6 7 8 9</div>
-                    </div>
-                    <div class="slot-column" id="slot-2">
-                        <div class="slot-numbers">0 1 2 3 4 5 6 7 8 9</div>
-                    </div>
-                    <div class="slot-column" id="slot-3">
-                        <div class="slot-numbers">0 1 2 3 4 5 6 7 8 9</div>
-                    </div>
+                    <div class="slot-column" id="slot-1"><div class="slot-numbers">0 1 2 3 4 5 6 7 8 9</div></div>
+                    <div class="slot-column" id="slot-2"><div class="slot-numbers">0 1 2 3 4 5 6 7 8 9</div></div>
+                    <div class="slot-column" id="slot-3"><div class="slot-numbers">0 1 2 3 4 5 6 7 8 9</div></div>
                 </div>
                 <span class="counter-label">位視想家加入</span>
             </div>
