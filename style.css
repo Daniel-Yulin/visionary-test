@@ -1,104 +1,73 @@
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh;
     background: radial-gradient(circle at center, #1a1c2c 0%, #050505 100%);
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
+.wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; }
 
 .container {
-    text-align: center;
-    width: 85%;
-    max-width: 350px;
-    background-color: #ffffff;
-    padding: 55px 30px;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.9);
-    border-radius: 2px;
+    text-align: center; width: 85%; max-width: 350px; background-color: #ffffff;
+    padding: 60px 30px; box-shadow: 0 40px 100px rgba(0,0,0,0.9); border-radius: 2px;
 }
 
-.animate-in {
-    animation: fadeInScale 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
+.animate-in { animation: fadeInScale 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 @keyframes fadeInScale {
     from { opacity: 0; transform: scale(0.95) translateY(20px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* 修正后的 Logo 容器：垂直排列 */
+/* Logo 區域：雲朵與文字都放大 */
 .logo-container {
-    margin-top: 0;
-    margin-bottom: 2rem; /* 與下方文案的距離，適度拉開增加層次 */
+    margin-top: 15px;
+    margin-bottom: 2.2rem;
     display: flex;
-    flex-direction: column; /* 圖片在上面，文字在下面 */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px; /* 圖片與下方文字的間距 */
+    gap: 12px;
 }
 
 .logo-img {
-    max-height: 55px; /* 維持一個精緻、不搶眼的雲朵高度 */
+    max-height: 58px; /* 從 48px 放大到 58px */
     width: auto;
     display: block;
 }
 
-/* 視想家文字樣式 (精緻簡約、小小的) */
 .logo-text {
     font-family: 'Inter', sans-serif;
-    font-weight: 700; /* 粗體以確保小字清晰，但非Extra-Bold，避免沉重 */
-    font-size: 0.8rem; /* 大幅縮小，達到「小小的不要這麼大」的效果 */
+    font-weight: 700;
+    font-size: 0.95rem; /* 從 0.75rem 放大到 0.95rem */
     color: #000;
-    letter-spacing: 0.15rem; /* 關鍵：大幅拉開字距，提升精品感與簡約感 */
+    letter-spacing: 0.15rem; /* 字距稍微拉開配合放大的字級 */
     line-height: 1.2;
-    text-transform: uppercase; /* 可選：加一點專業感，看你喜歡繁體原樣還是轉大寫 */
 }
 
 .subtitle {
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 0;
-    margin-bottom: 2.5rem; /* 輸入框上方的距離 */
-    letter-spacing: 0.02rem;
+    font-size: 0.85rem; color: #666; margin-top: 0;
+    margin-bottom: 2.8rem; letter-spacing: 0.02rem;
 }
 
 input {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #eee;
-    border-radius: 2px;
-    font-size: 16px; 
-    margin-bottom: 1rem;
-    outline: none;
-    transition: border 0.3s;
+    width: 100%; padding: 14px; border: 1px solid #eee; border-radius: 2px;
+    font-size: 16px; margin-bottom: 1rem; outline: none; transition: border 0.3s;
 }
 input:focus { border: 1px solid #000; }
 
+/* 按鈕：NOW OR NEVER 小一點，更精緻 */
 button {
     position: relative;
     width: 100%;
-    padding: 14px;
+    padding: 15px; 
     background-color: #000;
     color: #fff;
     border: none;
     border-radius: 2px;
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-size: 0.8rem; /* 從 0.9rem 縮小到 0.8rem */
+    font-weight: 800;
+    letter-spacing: 0.15rem; /* 增加字距，讓小字依然有質感 */
     cursor: pointer;
     overflow: hidden;
     transition: transform 0.1s ease;
@@ -106,70 +75,33 @@ button {
 
 button:active { transform: scale(0.97); }
 
-/* 光條效果維持不變 */
 .shimmer {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
+    position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
     animation: loading 1.2s infinite;
 }
-
-@keyframes loading {
-    from { left: -100%; }
-    to { left: 100%; }
-}
+@keyframes loading { from { left: -100%; } to { left: 100%; } }
 
 footer { margin-top: 2.8rem; }
 .footer-main { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05rem; color: #000;}
 .privacy-note { margin-top: 0.8rem; font-size: 10px; color: #aaa; }
 
 .footer-external {
-    margin-top: 3.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    margin-top: 3.5rem; display: flex; flex-direction: column; align-items: center; gap: 10px;
 }
-
-.copyright {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.25);
-}
-
+.copyright { font-size: 0.75rem; color: rgba(255, 255, 255, 0.25); }
 .counter-container {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
-    display: flex;
-    align-items: center;
+    font-size: 0.75rem; color: rgba(255, 255, 255, 0.4); display: flex; align-items: center;
 }
-
-.dot {
-    width: 6px;
-    height: 6px;
-    background-color: #4cd964;
-    border-radius: 50%;
-    margin-right: 8px;
-    box-shadow: 0 0 8px rgba(76, 217, 100, 0.5);
-}
-
-.count-number {
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.85);
-    margin: 0 4px;
-}
+.dot { width: 6px; height: 6px; background-color: #4cd964; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 8px rgba(76, 217, 100, 0.5); }
+.count-number { font-weight: 700; color: rgba(255, 255, 255, 0.85); margin: 0 4px; }
 
 .toast {
     position: fixed; top: 30px; left: 50%; transform: translateX(-50%) translateY(-120px);
     z-index: 1000; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
-.toast-content {
-    background: #fff; padding: 12px 24px; border-radius: 50px;
-    display: flex; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
+.toast-content { background: #fff; padding: 12px 24px; border-radius: 50px; display: flex; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 .check-icon { background: #4cd964; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; margin-right: 10px; }
 .toast-text { color: #333; font-size: 0.9rem; font-weight: 700; }
 

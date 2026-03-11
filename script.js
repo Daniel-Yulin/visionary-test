@@ -5,7 +5,6 @@ const submitBtn = document.getElementById('submit-btn');
 const message = document.getElementById('message');
 const toast = document.getElementById('toast');
 
-// --- 數字滾動動畫 ---
 function animateValue(obj, start, end, duration) {
     let startTimestamp = null;
     const step = (timestamp) => {
@@ -19,19 +18,14 @@ function animateValue(obj, start, end, duration) {
     window.requestAnimationFrame(step);
 }
 
-// 頁面載入後啟動計數器
 window.addEventListener('DOMContentLoaded', () => {
     const counterObj = document.getElementById('member-count');
-    // 從 0 滾動到 312，耗時 2 秒
     animateValue(counterObj, 0, 312, 2000);
 });
 
-// --- 表單提交邏輯 ---
 form.addEventListener('submit', e => {
     e.preventDefault();
     submitBtn.disabled = true;
-
-    // 啟動光條與 Loading 文字
     submitBtn.innerHTML = `
         <div class="shimmer"></div>
         <span style="position: relative; z-index: 1;">Connecting...</span>
@@ -43,11 +37,8 @@ form.addEventListener('submit', e => {
         body: new URLSearchParams(new FormData(form)) 
     })
     .then(() => {
-        // 顯示頂部成功 Toast
         toast.classList.remove('hidden');
         setTimeout(() => toast.classList.add('show'), 100);
-
-        // 切換主畫面成功訊息
         form.classList.add('hidden');
         message.classList.remove('hidden');
         message.innerHTML = `
@@ -55,8 +46,6 @@ form.addEventListener('submit', e => {
             本期動力原圖將透過 Email 交付。<br>
             請留意來自「視想家」的信件。
         `;
-
-        // 3秒後 Toast 消失
         setTimeout(() => {
             toast.classList.remove('show');
             setTimeout(() => toast.classList.add('hidden'), 600);
@@ -64,7 +53,7 @@ form.addEventListener('submit', e => {
     })
     .catch(error => {
         console.error('Error!', error.message);
-        submitBtn.innerHTML = '立即訂閱';
+        submitBtn.innerHTML = 'NOW OR NEVER'; // 錯誤時恢復原標語
         submitBtn.disabled = false;
     });
 });
