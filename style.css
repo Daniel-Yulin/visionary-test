@@ -10,7 +10,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background: radial-gradient(circle at center, #1a1c2c 0%, #050505 100%);
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
@@ -41,29 +41,39 @@ body {
     to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* 修正：圖片 Logo 樣式控制 */
+/* 修正后的 Logo 容器：垂直排列 */
 .logo-container {
-    margin-bottom: 1rem; /* 與下方的距離 */
+    margin-top: 0;
+    margin-bottom: 2rem; /* 與下方文案的距離，適度拉開增加層次 */
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* 圖片在上面，文字在下面 */
     align-items: center;
+    justify-content: center;
+    gap: 12px; /* 圖片與下方文字的間距 */
 }
 
 .logo-img {
-    height: auto;
+    max-height: 55px; /* 維持一個精緻、不搶眼的雲朵高度 */
     width: auto;
-    max-height: 60px; /* 控制 Logo 的最大高度，避免過大 */
-    max-width: 120px;  /* 控制 Logo 的最大寬度 */
     display: block;
-    /* 如果圖片周圍有不必要的空白，可以用這個微調 */
-    /* object-fit: contain; */
+}
+
+/* 視想家文字樣式 (精緻簡約、小小的) */
+.logo-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700; /* 粗體以確保小字清晰，但非Extra-Bold，避免沉重 */
+    font-size: 0.8rem; /* 大幅縮小，達到「小小的不要這麼大」的效果 */
+    color: #000;
+    letter-spacing: 0.15rem; /* 關鍵：大幅拉開字距，提升精品感與簡約感 */
+    line-height: 1.2;
+    text-transform: uppercase; /* 可選：加一點專業感，看你喜歡繁體原樣還是轉大寫 */
 }
 
 .subtitle {
     font-size: 0.85rem;
     color: #666;
     margin-top: 0;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.5rem; /* 輸入框上方的距離 */
     letter-spacing: 0.02rem;
 }
 
@@ -96,6 +106,7 @@ button {
 
 button:active { transform: scale(0.97); }
 
+/* 光條效果維持不變 */
 .shimmer {
     position: absolute;
     top: 0;
@@ -112,7 +123,7 @@ button:active { transform: scale(0.97); }
 }
 
 footer { margin-top: 2.8rem; }
-.footer-main { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05rem; color: #000; }
+.footer-main { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05rem; color: #000;}
 .privacy-note { margin-top: 0.8rem; font-size: 10px; color: #aaa; }
 
 .footer-external {

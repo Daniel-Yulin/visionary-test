@@ -19,9 +19,11 @@ function animateValue(obj, start, end, duration) {
     window.requestAnimationFrame(step);
 }
 
+// 頁面載入後啟動計數器
 window.addEventListener('DOMContentLoaded', () => {
     const counterObj = document.getElementById('member-count');
-    animateValue(counterObj, 0, 312, 2000); // 抓一個大約 300 左右的數字
+    // 從 0 滾動到 312，耗時 2 秒
+    animateValue(counterObj, 0, 312, 2000);
 });
 
 // --- 表單提交邏輯 ---
