@@ -26,24 +26,20 @@ form.addEventListener('submit', e => {
 
     fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
     .then(() => {
-        // 彈出 Toast
         toast.classList.remove('hidden');
-        setTimeout(() => toast.classList.add('show'), 100);
+        setTimeout(() => toast.classList.add('show'), 50);
 
-        // 修改按鈕狀態為 SUCCESS
         submitBtn.innerHTML = 'SUCCESS';
-        submitBtn.style.backgroundColor = '#4cd964'; // 變更為成功綠（可選，或維持黑色）
-        form.reset(); // 清空輸入框
+        submitBtn.style.backgroundColor = '#4cd964';
+        form.reset();
 
-        // 4秒後收起 Toast
         setTimeout(() => {
             toast.classList.remove('show');
-            setTimeout(() => toast.classList.add('hidden'), 600);
-            // 恢復按鈕文字 (可選)
+            setTimeout(() => toast.classList.add('hidden'), 500);
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'NOW OR NEVER';
             submitBtn.style.backgroundColor = '#000';
-        }, 4000);
+        }, 3500);
     })
     .catch(error => {
         console.error('Error!', error.message);
