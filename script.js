@@ -21,7 +21,7 @@ function animateValue(obj, start, end, duration) {
 
 window.addEventListener('DOMContentLoaded', () => {
     const counterObj = document.getElementById('member-count');
-    animateValue(counterObj, 0, 312, 2000);
+    animateValue(counterObj, 0, 312, 2000); // 抓一個大約 300 左右的數字
 });
 
 // --- 表單提交邏輯 ---
@@ -45,7 +45,7 @@ form.addEventListener('submit', e => {
         toast.classList.remove('hidden');
         setTimeout(() => toast.classList.add('show'), 100);
 
-        // 切換主畫面成功訊息 (移除 Stay Visionary)
+        // 切換主畫面成功訊息
         form.classList.add('hidden');
         message.classList.remove('hidden');
         message.innerHTML = `

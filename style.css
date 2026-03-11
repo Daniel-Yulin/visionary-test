@@ -27,7 +27,7 @@ body {
     width: 85%;
     max-width: 350px;
     background-color: #ffffff;
-    padding: 55px 30px; /* 增加上下內邊距，提升比例感 */
+    padding: 55px 30px;
     box-shadow: 0 40px 100px rgba(0,0,0,0.9);
     border-radius: 2px;
 }
@@ -41,18 +41,30 @@ body {
     to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-.logo {
-    font-size: 2.2rem;
-    letter-spacing: 0.15rem;
-    font-weight: 800;
-    margin: 0 0 0.5rem 0;
-    color: #000;
+/* 修正：圖片 Logo 樣式控制 */
+.logo-container {
+    margin-bottom: 1rem; /* 與下方的距離 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-img {
+    height: auto;
+    width: auto;
+    max-height: 60px; /* 控制 Logo 的最大高度，避免過大 */
+    max-width: 120px;  /* 控制 Logo 的最大寬度 */
+    display: block;
+    /* 如果圖片周圍有不必要的空白，可以用這個微調 */
+    /* object-fit: contain; */
 }
 
 .subtitle {
     font-size: 0.85rem;
     color: #666;
-    margin-bottom: 2.5rem; /* 增加與輸入框的距離 */
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.02rem;
 }
 
 input {
@@ -63,7 +75,9 @@ input {
     font-size: 16px; 
     margin-bottom: 1rem;
     outline: none;
+    transition: border 0.3s;
 }
+input:focus { border: 1px solid #000; }
 
 button {
     position: relative;
@@ -82,7 +96,6 @@ button {
 
 button:active { transform: scale(0.97); }
 
-/* 按鈕流動光條 */
 .shimmer {
     position: absolute;
     top: 0;
@@ -102,9 +115,8 @@ footer { margin-top: 2.8rem; }
 .footer-main { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05rem; color: #000; }
 .privacy-note { margin-top: 0.8rem; font-size: 10px; color: #aaa; }
 
-/* 外部底部 */
 .footer-external {
-    margin-top: 3.5rem; /* 增加外部間距，讓比例更舒展 */
+    margin-top: 3.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -138,7 +150,6 @@ footer { margin-top: 2.8rem; }
     margin: 0 4px;
 }
 
-/* Toast */
 .toast {
     position: fixed; top: 30px; left: 50%; transform: translateX(-50%) translateY(-120px);
     z-index: 1000; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
@@ -152,17 +163,5 @@ footer { margin-top: 2.8rem; }
 .toast-text { color: #333; font-size: 0.9rem; font-weight: 700; }
 
 .hidden { display: none !important; }
-
-/* 成功訊息樣式優化 */
-#message { 
-    line-height: 1.8; 
-    font-size: 0.9rem; 
-    color: #1a1a1a; 
-    padding: 10px 0;
-}
-.success-title { 
-    display: block; 
-    font-size: 1.2rem; 
-    font-weight: 800; 
-    margin-bottom: 1rem; 
-}
+#message { line-height: 1.8; font-size: 0.9rem; color: #1a1a1a; padding: 10px 0;}
+.success-title { display: block; font-size: 1.2rem; font-weight: 800; margin-bottom: 1rem; }
