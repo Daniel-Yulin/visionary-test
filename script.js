@@ -3,6 +3,10 @@ const form = document.getElementById('email-form');
 const submitBtn = document.getElementById('submit-btn');
 const toast = document.getElementById('toast');
 
+// --- 新增：自動從網址抓取 IG 帳號 ---
+const urlParams = new URLSearchParams(window.location.search);
+const igHandleFromUrl = urlParams.get('ig') || '未透過IG進入'; 
+
 function rollSlot(id, target, delay) {
     const column = document.querySelector(`#${id} .slot-numbers`);
     const baseUnit = 1.0 * parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -24,13 +28,23 @@ form.addEventListener('submit', e => {
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<div class="shimmer"></div><span style="position: relative; z-index: 1;">Connecting...</span>`;
 
-    fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
+    const email = document.getElementById('email').value;
+
+    // 傳送 Email + 自動抓到的 IG 帳號
+    fetch(scriptURL, { 
+        method: 'POST', 
+        mode: 'no-cors', 
+        body: JSON.stringify({ 
+            email: email, 
+            igHandle: igHandleFromUrl 
+        }) 
+    })
     .then(() => {
         toast.classList.remove('hidden');
         setTimeout(() => toast.classList.add('show'), 50);
         
         submitBtn.innerHTML = 'SUCCESS';
-        submitBtn.style.backgroundColor = '#0a1931'; // 午夜藍成功色
+        submitBtn.style.backgroundColor = '#0a1931'; 
         form.reset();
         
         setTimeout(() => {
