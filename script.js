@@ -1,12 +1,14 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwbHh9oIllYUauDRJ0-Ts7xWTzKt7EmSAxBKM2PlbSnVMLYyHogQEwsXjhcydmAo10Z/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbz7coREPcdi9ntyR_xQZmoMpQbRP7HXqKMnDFZN02m0lrznif3Vh2IcFoi-jbkZSCt6/exec';
+
 const form = document.getElementById('email-form');
 const submitBtn = document.getElementById('submit-btn');
 const toast = document.getElementById('toast');
 
-// --- 新增：自動從網址抓取 IG 帳號 ---
+// 2. 自動從網址抓取 IG 帳號參數 (?ig=xxxx)
 const urlParams = new URLSearchParams(window.location.search);
 const igHandleFromUrl = urlParams.get('ig') || '未透過IG進入'; 
 
+// --- Slot Machine 計數器動畫邏輯 ---
 function rollSlot(id, target, delay) {
     const column = document.querySelector(`#${id} .slot-numbers`);
     const baseUnit = 1.0 * parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -23,23 +25,32 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 600);
 });
 
+// --- 表單提交邏輯 ---
 form.addEventListener('submit', e => {
     e.preventDefault();
+    
+    // 按鈕進入讀取狀態
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<div class="shimmer"></div><span style="position: relative; z-index: 1;">Connecting...</span>`;
 
-    const email = document.getElementById('email').value;
+    const emailValue = document.getElementById('email').value;
 
-    // 傳送 Email + 自動抓到的 IG 帳號
+    // 使用 JSON 格式傳送資料，確保欄位對應正確
+    const payload = {
+        email: emailValue,
+        igHandle: igHandleFromUrl
+    };
+
     fetch(scriptURL, { 
         method: 'POST', 
-        mode: 'no-cors', 
-        body: JSON.stringify({ 
-            email: email, 
-            igHandle: igHandleFromUrl 
-        }) 
+        mode: 'no-cors', // 避免跨域問題
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload) 
     })
     .then(() => {
+        // 成功後的視覺回饋
         toast.classList.remove('hidden');
         setTimeout(() => toast.classList.add('show'), 50);
         
@@ -47,6 +58,7 @@ form.addEventListener('submit', e => {
         submitBtn.style.backgroundColor = '#0a1931'; 
         form.reset();
         
+        // 4秒後恢復按鈕狀態
         setTimeout(() => {
             toast.classList.remove('show');
             setTimeout(() => toast.classList.add('hidden'), 500);
@@ -57,6 +69,7 @@ form.addEventListener('submit', e => {
     })
     .catch(error => {
         console.error('Error!', error.message);
+        alert('連線失敗，請檢查網路後再試一次');
         submitBtn.innerHTML = 'NOW OR NEVER';
         submitBtn.disabled = false;
     });
